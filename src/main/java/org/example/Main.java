@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.model.*;
+import org.example.service.InvoicePrinter;
 import org.example.service.RentalCalculator;
 
 import java.time.LocalDate;
@@ -9,8 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Customer customer = new Customer("Zahari",
                                          "Nikiforov",
-                                         22,
-                                         4);
+                                         22);
 
 //        Car car = new Car("BMW", "F10", 15000, 3);
 //        VehicleRental request = new VehicleRental(
@@ -36,7 +36,8 @@ public class Main {
                 LocalDate.of(2024, 6, 13));
 
         RentalCalculator rentalCalculator = new RentalCalculator();
-        rentalCalculator.createInvoice(request);
+        Invoice invoice = rentalCalculator.createInvoice(request);
+        InvoicePrinter invoicePrinter = new InvoicePrinter();
+        invoicePrinter.printInvoice(invoice);
     }
-
 }

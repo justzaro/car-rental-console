@@ -4,14 +4,11 @@ public class Customer {
     private String firstName;
     private String lastName;
     private int age;
-    private double drivingExperience;
-
     public Customer(String firstName, String lastName,
-                    int age, double drivingExperience) {
+                    int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.drivingExperience = drivingExperience;
     }
 
     public String getFirstName() {
@@ -36,13 +33,5 @@ public class Customer {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public double getDrivingExperience() {
-        return drivingExperience;
-    }
-
-    public void setDrivingExperience(double drivingExperience) {
-        this.drivingExperience = drivingExperience;
     }
 }

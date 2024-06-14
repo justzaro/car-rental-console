@@ -47,47 +47,71 @@ public class Invoice {
         this.total = total;
     }
 
-    public String generateInvoice() {
-        StringBuilder invoice = new StringBuilder();
-        invoice.append(vehicle.getVehicleInformation()).append("\n");
-        invoice.append("------------------------------------\n");
-        invoice.append("Date: ").append(reservationStartDate).append("\n");
-        invoice.append("Customer Name: ").append(customer.getFirstName()).append(" ").append(customer.getLastName()).append("\n");
-        invoice.append("Rented Vehicle: ").append(vehicle.getBrand()).append(" ").append(vehicle.getModel()).append("\n");
-        invoice.append("------------------------------------\n");
-        invoice.append("Reservation start date: ").append(reservationStartDate).append("\n");
-        invoice.append("Reservation end date: ").append(reservationEndDate).append("\n");
-        invoice.append("Reserved rental days: ").append(reservedRentalDays).append("\n");
-        invoice.append("------------------------------------\n");
-        invoice.append("Actual return date: ").append(returnDate).append("\n");
-        invoice.append("Actual rental days: ").append(actualRentalDays).append("\n");
-        invoice.append("Rental cost per day: $").append(String.format("%.2f", rentalCostPerDay)).append("\n");
+    public Customer getCustomer() {
+        return customer;
+    }
 
-        insuranceAdditionPerDay.ifPresent(value -> {
-            invoice.append("Initial insurance per day: $").append(String.format("%.2f", initialInsurancePerDay)).append("\n");
-            invoice.append("Insurance addition per day: $").append(String.format("%.2f", value)).append("\n");
-        });
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
 
-        insuranceDiscountPerDay.ifPresent(value -> {
-            invoice.append("Initial insurance per day: $").append(String.format("%.2f", initialInsurancePerDay)).append("\n");
-            invoice.append("Insurance discount per day: $").append(String.format("%.2f", value)).append("\n");
-        });
+    public LocalDate getReservationStartDate() {
+        return reservationStartDate;
+    }
 
-        invoice.append("Insurance per day: $").append(String.format("%.2f", finalInsurancePerDay)).append("\n");
+    public LocalDate getReservationEndDate() {
+        return reservationEndDate;
+    }
 
-        earlyReturnDiscountForRent.ifPresent(value -> {
-            invoice.append("Early return discount for rent: $").append(String.format("%.2f", value)).append("\n");
-        });
+    public long getReservedRentalDays() {
+        return reservedRentalDays;
+    }
 
-        earlyReturnDiscountForInsurance.ifPresent(value -> {
-            invoice.append("Early return discount for insurance: $").append(String.format("%.2f", value)).append("\n");
-        });
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
 
-        invoice.append("------------------------\n");
-        invoice.append("Total rent: $").append(String.format("%.2f", totalRent)).append("\n");
-        invoice.append("Total insurance: $").append(String.format("%.2f", totalInsurance)).append("\n");
-        invoice.append("Total: $").append(String.format("%.2f", total)).append("\n");
+    public long getActualRentalDays() {
+        return actualRentalDays;
+    }
 
-        return invoice.toString();
+    public double getRentalCostPerDay() {
+        return rentalCostPerDay;
+    }
+
+    public double getInitialInsurancePerDay() {
+        return initialInsurancePerDay;
+    }
+
+    public Optional<Double> getInsuranceAdditionPerDay() {
+        return insuranceAdditionPerDay;
+    }
+
+    public Optional<Double> getInsuranceDiscountPerDay() {
+        return insuranceDiscountPerDay;
+    }
+
+    public double getFinalInsurancePerDay() {
+        return finalInsurancePerDay;
+    }
+
+    public Optional<Double> getEarlyReturnDiscountForRent() {
+        return earlyReturnDiscountForRent;
+    }
+
+    public Optional<Double> getEarlyReturnDiscountForInsurance() {
+        return earlyReturnDiscountForInsurance;
+    }
+
+    public double getTotalRent() {
+        return totalRent;
+    }
+
+    public double getTotalInsurance() {
+        return totalInsurance;
+    }
+
+    public double getTotal() {
+        return total;
     }
 }
