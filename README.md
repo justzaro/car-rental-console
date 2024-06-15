@@ -30,6 +30,8 @@ The Rental Management System handles vehicle rental operations, including custom
 - **CarCostCalculator**: Calculates insurance and rental costs for cars.
 - **CargoVanCostCalculator**: Calculates insurance and rental costs for cargo vans.
 - **MotorcycleCostCalculator**: Calculates insurance and rental costs for motorcycles.
+- **RentalCalculator**: Calculates all fees regarding a requested rental and return an Invoice object.
+- **InvoicePrinter**: Prints the invoice in a desired fashion.
 - **VehicleCostCalculator**: Interface for calculating insurance and rental costs.
 
 ## Approach
@@ -37,4 +39,4 @@ The Rental Management System handles vehicle rental operations, including custom
 - This approach allows the VehicleRental to hold the abstract class Vehicle, and when used later in the RentalCalculator to calculate generata an invoice, it gives teh flexibility to work with the vehicle-specific cost calculator and costs instead of checking the type of vehicle and applying the costs manually.
 - If a new vehicle is added in the future, it won't change the RentalCalculator logic, as it would have happened if the vehicle-specific costs were applied based of instanceof check, for example.
 - The invoice is built using the builder pattern, which makes building the invoice easier and if a different invoice structure is needed, the ConcreteInvoiceBuilder can easily be replaced with a different one, who impelemnts the InvoiceBuilder interface.
-- A invoice priner class is responisble for printing the invoices.
+- A invoice priner class is responsisble for printing the invoices.
